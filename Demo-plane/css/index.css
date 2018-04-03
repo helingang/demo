@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+}
+#Game{
+    position: relative;
+    margin: 10px auto;
+    width: 512px;
+    height: 768px;
+    
+}
+#level{
+    position: absolute;
+    left: 0;
+    padding-top: 100px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+#level.hide{
+    display: none;
+}
+#level h2{
+    margin-bottom: 100px;
+}
+#level p{
+    line-height: 60px;
+    margin: 30px auto;
+    cursor: pointer;
+    width: 160px;
+    color: #000;
+    background: #fff;
+    transition: background .3s;
+}
+#level p:nth-last-of-type(1){
+    color: red;
+}
+#level p:hover{
+    background: pink; 
+}
+#map{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/bg_1.jpg');
+    cursor: none;
+    
+    overflow: hidden;
+}
+#map .plane,#map .biu,#map .enemy,#map .boom,#map .boom1{
+    position: absolute;
+}
+#map .plane{
+    z-index: 5;
+}
+#map .biu{
+    z-index: 10;
+}
+#map .enemy{
+    z-index: 6;
+}
+#map .boom{
+    z-index: 1;
+    animation: change .2s 1 forwards;
+}
+@keyframes change{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+#map .boom1{
+    z-index: 1;
+    animation: change 1s 1 forwards;
+}
+@keyframes change{
+    from{
+        transform: scale(1);
+        opacity: 1;
+    }
+    to{
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+#score{
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 20px;
+    color: #fff;
+}

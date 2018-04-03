@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="LostStars">
+    <title> -- 3/18/2018</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            position: relative;
+            margin: 50px auto;
+            width: 1100px;
+            overflow: hidden;
+        }
+        #wrap > div{
+            float: left;
+            width: 250px;
+            margin: 12.5px;
+        }
+        #wrap > div > div{
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            width: 250px;
+            background: #ccc;
+            font-size: 18px;
+        }
+        #wrap > div > div img{
+            margin: 5px;
+        }
+        #wrap > div > div p{
+            text-indent: 10px;
+        }
+        #wrap > div > div span{
+            font-weight: bolder;
+        }
+        #wrap .film .filmName a{
+            color: #000;
+            transition: color .1s;
+        }
+        #wrap .film .filmName a:hover{
+            color: red;
+        }
+        #wrap .film p.high > span{
+            color: red;
+        }
+        #wrap .film p.middle > span{
+            color: orange;
+        }
+        #wrap .film p.low > span{
+            color: green;
+        }
+        #test{
+            width: 100%;
+            height: 10px;
+            margin-bottom: 100px;
+            text-align: center;
+            font-size: 100px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box1">
+            <!--<div class='film'>-->
+                <!--<img src="http://img7.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg" width="240" height="auto" alt="" class="filmImg">-->
+                <!--<p class="filmName">片名: <a href="https://movie.douban.com/subject/1292052/"><span>肖申克的救赎</span></a></p>-->
+                <!--<p class="filmYear">年份: <span>1994</span></p>-->
+                <!--<p class="high">评分: <span>9.6</span></p>-->
+            <!--</div>-->
+
+        </div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+    </div>
+    <div id="test" class="hide"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        let aList = document.querySelectorAll('#wrap > div');
+        let [s,c,oTest,timer] = [
+            0,
+            8,
+            document.getElementById('test')
+        ];
+
+        eFn(100);
+        window.onscroll = function(){
+            eFn(100)
+        };
+        function eFn(a){
+            if(s>=100)return;
+            let oTestTop = oTest.offsetTop;
+            let oNowTop = (document.documentElement.scrollTop||document.body.scrollTop) + window.innerHeight;
+            clearTimeout(timer);
+            if(oTestTop-oNowTop<=300){
+
+
+                timer = setTimeout(function(){
+                    console.log(oTestTop,oNowTop);
+                    ajax({
+                        url :'http://120.77.174.93/dbmovie',
+                        dataType : 'json',
+                        data : {
+                            start : s,
+                            count : c
+                        },
+                        success : function(data){
+                            //处理ajax成功函数返回的数据
+                            console.log(data);
+                            draw(data);
+                        }
+                    });
+                    s += c;
+                },a||100);
+            }
+        }
+
+
+        //渲染界面,创造div
+        function draw(data){
+            let i=0;
+            (function m(){
+                if(i>=c)return;
+                if(!data[i])return;
+                let d = data[i];
+                let src = d.images.large;
+                let filmNerf = d.alt;
+                let filmName = d.title;
+                let filmYear = d.year;
+                let filmScore = d.rating.average;
+                let filmScoreLevel;
+                if(filmScore>=9.5){
+                    filmScoreLevel = 'high';
+                }else if(filmScore>=9){
+                    filmScoreLevel = 'middle';
+                }else{
+                    filmScoreLevel = 'low';
+                }
+                let oImg = new Image();
+                //src会放在缓存中供后面使用
+                oImg.src = d.images.large;
+                oImg.onload = function(){
+                    let oFilm = document.createElement('div');
+                    oFilm.className = 'film';
+                    oFilm.innerHTML = `
+                <div>
+                    <img title="${filmName}" src="${src}" width="240" height="auto" alt="" class="filmImg">
+                    <p class="filmName">片名: <a href="${filmNerf}"><span>${filmName}</span></a></p>
+                    <p class="filmYear">年份: <span>${filmYear}</span></p>
+                    <p class="${filmScoreLevel}">评分: <span>${filmScore}</span></p>
+                </div>`;
+                    let index = indexOfShort();
+                    aList[index].appendChild(oFilm);
+                    i++;
+                    m();
+                    let left = oFilm.offsetLeft;
+                    let top = oFilm.offsetTop;
+                    oFilm.style.cssText = `top:-${top}px;left:-${left}px;transition:top .5s,left .5s;`;
+                    setTimeout(function(){
+                        oFilm.style.top = 0;
+                        oFilm.style.left = 0;
+                    },20);
+
+                };
+            }())
+        }
+
+        //找到最短的列表存放
+        function indexOfShort(){
+            //定义最小top所在list的index,和最小的minHeight值
+            let index = 0;
+            let minHeight = aList[0].clientHeight;
+            let h;
+            for(let i=0,length=aList.length;i<length;i++){
+                h = aList[i].clientHeight;
+                if(h<minHeight){
+                    index = i;
+                    minHeight = h;
+                }
+            }
+            return index;
+        }
+
+        function ajax(json){
+            //处理参数
+            var type = json.type || 'GET';
+            var url = json.url;
+            var data = json.data || '';
+            var success = json.success;
+            var error = json.error;
+            var dataType = json.dataType || 'json';
+            //处理data拼接url
+            if(data){
+                var val = '';
+                for(var key in data){
+                    val += key + '=' + data[key] + '&';
+                }
+                val += '_='+new Date().getTime();//需要添加时间戳日期毫秒(因为相同请求地址IE不会去发送请求,而其他浏览器会)
+                data = val;
+                //如果是get请求,则拼接url
+                if(/get/i.test(type)){
+                    url += '?' + val;
+                    data = "";
+                }
+            }
+
+            //请求部分
+            var xhr = new XMLHttpRequest();
+            xhr.open( type , url , true);
+            xhr.setRequestHeader('content-Type','application/x-www-form-urlencoded');//send之前设置请求头,POST请求下必须的
+            xhr.send( data );
+            xhr.onreadystatechange = function(){
+                if(this.readyState === 4){
+                    var status = this.status;
+                    if(status >= 200 && status < 300){
+                        var responseText = this.responseText;
+                        if(dataType === 'json'){
+                            responseText = JSON.parse(responseText);
+                        }
+                        success && success(responseText);
+                    }else{
+                        error && error(status);
+                    }
+                }
+            };
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,714 @@
+.JD {
+  width: 10rem;
+}
+/* 开始 头部 */
+/* 开始 头部搜索栏 */
+.h-search {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  height: 0.609375rem;
+  width: 100%;
+  background-color: #e02f31;
+}
+.h-search > form {
+  display: flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+.h-search > form:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -0.09375rem;
+  left: 0.3125rem;
+  width: 0.25rem;
+  height: 0.1875rem;
+  background: url('../images/h-search/1.png') no-repeat center / cover;
+}
+.h-search > form:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -0.09375rem;
+  left: 0.625rem;
+  width: 0.1875rem;
+  height: 0.1875rem;
+  background: url('../images/h-search/2.png') no-repeat center / cover;
+}
+.h-search > form > input {
+  flex: 1;
+  margin: 0 0.15625rem;
+  height: 0.453125rem;
+  border-radius: 40px;
+  font-size: 0.1875rem;
+  text-indent: 4em;
+}
+.h-search > form > a {
+  margin: 0 0.15625rem 0 0;
+  font-size: 0.21875rem;
+  color: #fff;
+}
+/* 开始 头部轮播图 */
+.h-banner .swiper-slide {
+  width: 10rem;
+}
+.h-banner .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.8);
+}
+.h-banner .swiper-pagination-bullet-active {
+  background: #fff;
+}
+.h-banner img {
+  width: 100%;
+  height: 100%;
+}
+/* 开始 身体 */
+/* 开始 主导航 */
+.b-navmain {
+  width: 100%;
+  margin-top: 0.125rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.b-navmain > a {
+  padding: 0.125rem 0;
+  height: 0.5625rem;
+  width: 20%;
+  text-align: center;
+}
+@media all and (max-width: 512px) {
+  .b-navmain > a {
+    width: 25%;
+  }
+}
+.b-navmain > a > img {
+  width: 0.453125rem;
+  height: 0.453125rem;
+}
+.b-navmain > a > p {
+  color: #666;
+  font-size: 0.1875rem;
+}
+/* 开始 抽奖 */
+.lottery-wrap {
+  margin: 0.25rem 0 0 0;
+}
+.lott-w-top {
+  height: 1.515625rem;
+  background: url('../images/b-lottery/bg1.png') no-repeat center / cover;
+}
+.lott-w-body {
+  position: relative;
+  height: 4.015625rem;
+  background: url('../images/b-lottery/bg2.png') no-repeat center / cover;
+}
+.lott-w-body .lott-st {
+  position: absolute;
+  bottom: 0.40625rem;
+  left: 50%;
+  margin-left: -1.71875rem;
+  width: 3.4375rem;
+  height: 0.78125rem;
+}
+.lott-w-body .lott-q {
+  position: absolute;
+  bottom: 0.390625rem;
+  left: 1.484375rem;
+  width: 0.78125rem;
+  height: 0.78125rem;
+}
+.lottery {
+  position: absolute;
+  left: 50%;
+  margin-left: -3.1953125rem;
+  top: 0.46875rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 6.390625rem;
+  height: 2rem;
+  border-radius: 0.078125rem;
+  overflow: hidden;
+}
+.lottery:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 0.359375rem;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0));
+}
+.lottery > [class^='lo'] {
+  position: relative;
+  overflow: hidden;
+  width: 2.046875rem;
+}
+.lottery > [class^='lo'] > ul {
+  position: absolute;
+  width: 100%;
+  height: 7.8125rem;
+  padding-top: 0.296875rem;
+  background-color: #fff;
+}
+.lottery > [class^='lo'] > ul > li {
+  width: 100%;
+  height: 1.40625rem;
+  text-align: center;
+}
+.lottery > [class^='lo'] > ul > li > img {
+  height: 100%;
+}
+.lottery div:nth-child(4) {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0.515625rem;
+  text-align: center;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.1));
+}
+.lottery div:nth-child(4) span {
+  font-size: 0.25rem;
+  line-height: 0.5625rem;
+  color: #fff;
+}
+/* 开始 京东快报 */
+.report-wrap {
+  margin: 0 0 0.125rem 0;
+}
+.report {
+  display: flex;
+  align-items: center;
+  margin: 0 0.125rem;
+  padding: 0.125rem;
+  height: 0.21875rem;
+  border-radius: 0.125rem;
+  background-color: #fff;
+}
+.report > img {
+  height: 0.25rem;
+}
+.report .r-data {
+  position: relative;
+  margin: 0 0.15625rem;
+  overflow: hidden;
+  width: 100%;
+  height: 0.28125rem;
+}
+.report .r-data > ul {
+  position: absolute;
+  top: -0.28125rem;
+  width: 100%;
+  height: 3.125rem;
+}
+.report .r-data > ul > li > a {
+  line-height: 0.28125rem;
+}
+.report .r-data > ul mark {
+  color: #F02B2B;
+  font-weight: bold;
+  background-color: #fff;
+}
+.report > span {
+  flex: none;
+  color: #666;
+}
+.report > span:nth-of-type(1) {
+  margin: 0 0.078125rem;
+  color: #ccc;
+}
+/* 开始 秒杀 */
+/* 开始 秒杀顶部 */
+.skill-wrap {
+  margin: 0.125rem 0;
+  background-color: #fff;
+  width: 100%;
+}
+.skill-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 0.53125rem;
+  /* border: 1px solid red; */
+}
+.skill-top > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  /* width: 100%; */
+}
+.skill-top > a:nth-of-type(1) {
+  width: 100%;
+}
+.skill-wrap .t-l > img {
+  height: 0.40625rem;
+}
+.skill-wrap .t-l .skill-t1 {
+  font-weight: 900;
+}
+.skill-wrap .t-l .skill-t2 span:nth-child(odd) {
+  width: 0.234375rem;
+  height: 0.234375rem;
+  border: 0.015625rem solid #ccc;
+}
+.skill-wrap .t-r {
+  display: flex;
+  width: 20%;
+  justify-content: flex-end;
+  align-items: center;
+}
+.skill-wrap .t-r > span {
+  color: red;
+  font-size: .8em;
+}
+.skill-wrap .t-r > i {
+  display: inline-block;
+  margin: 0 0.078125rem;
+  height: 0.1875rem;
+  width: 0.1875rem;
+  text-align: center;
+  line-height: 0.1875rem;
+  border-radius: 50%;
+  font-size: .4em;
+  color: #fff;
+  background-color: red;
+}
+/* 开始 秒杀身体 */
+.skill-body {
+  height: 3.578125rem;
+  /* border: 1px solid red; */
+}
+.skill-banner-wrap {
+  position: relative;
+  width: 10rem;
+  height: 100%;
+  overflow: hidden;
+}
+.skill-banner {
+  position: absolute;
+  left: -3.0625rem;
+  top: 0;
+  display: flex;
+  width: 31.25rem;
+}
+.skill-banner > li > a {
+  display: inline-block;
+  width: 3.0625rem;
+  height: 3.578125rem;
+  text-align: center;
+}
+.skill-banner > li > a > img {
+  width: 2.71875rem;
+  height: 2.71875rem;
+}
+.skill-banner > li > a > p:nth-of-type(1) {
+  color: red;
+}
+.skill-banner > li > a > p:nth-of-type(1) span:nth-of-type(1) {
+  font-size: .8em;
+}
+.skill-banner > li > a > p:nth-of-type(1) span:nth-of-type(2) {
+  font-size: 0.25rem;
+  font-weight: 900;
+}
+.skill-banner > li > a > p:nth-of-type(2) {
+  color: #666;
+  text-decoration: line-through;
+}
+.skill-banner > li > a > p:nth-of-type(2) span:nth-of-type(1) {
+  font-size: .8em;
+}
+.skill-banner > li > a > p:nth-of-type(2) span:nth-of-type(2) {
+  font-size: 0.1875rem;
+}
+/* 开始 GIF */
+.info-wrap {
+  width: 100%;
+}
+.info-wrap > a > img {
+  width: 10rem;
+}
+/* 开始 副导航1 */
+.b-navvice1 .navvice1-l1 {
+  border-bottom: 0.015625rem solid #F5F5F5;
+}
+.b-navvice1 > div > a > div > p:nth-child(1) {
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.b-navvice1 > div:nth-child(1) > a:nth-child(1) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, red, orange);
+}
+.b-navvice1 > div:nth-child(1) > a:nth-child(2) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, orange, yellow);
+}
+.b-navvice1 > div:nth-child(1) > a:nth-child(3) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, yellow, green);
+}
+.b-navvice1 > div:nth-child(1) > a:nth-child(4) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, #000, #000);
+}
+.b-navvice1 > div:nth-child(2) > a:nth-child(1) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, green, blue);
+}
+.b-navvice1 > div:nth-child(2) > a:nth-child(2) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, blue, pink);
+}
+.b-navvice1 > div:nth-child(2) > a:nth-child(3) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, pink, purple);
+}
+.b-navvice1 > div:nth-child(2) > a:nth-child(4) > div > p:nth-child(1) {
+  background-image: linear-gradient(to right, purple, red);
+}
+/* 开始 副导航2 */
+.b-navvice2 .navvice2-l1 {
+  border-bottom: 0.015625rem solid #F5F5F5;
+}
+.b-navvice2 .navvice2-l2 {
+  border-bottom: 0.015625rem solid #F5F5F5;
+}
+.b-navvice2 > div > a > div:nth-child(1) > p:nth-child(2) {
+  color: red;
+}
+/* 开始 中部轮播图 */
+.b-banner2 {
+  width: 10rem;
+}
+.swiper-container-2 {
+  width: 100%;
+  overflow: hidden;
+}
+.b-banner2 .swiper-slide {
+  top: 0.15625rem;
+}
+.b-banner2 .swiper-slide img {
+  height: 2.34375rem;
+}
+.b-banner2 .swiper-slide-active {
+  top: 0;
+}
+.b-banner2 .swiper-slide-active img {
+  height: 2.65625rem;
+}
+/* 开始 副导航3 */
+.b-navvice3 > div + div {
+  border-top: 0.015625rem solid #F5F5F5;
+}
+.b-navvice3 > div > a > div > p:nth-of-type(2) {
+  color: #D86AE2;
+}
+/* 开始 中部图片2 */
+.b-centerimg-com2 {
+  text-align: center;
+}
+.b-centerimg-com2 > a > img {
+  margin: 0.125rem 0;
+  width: 9.53125rem;
+  height: 2.65625rem;
+}
+/* 开始 副导航4 */
+.b-navvice4 > div > a > div > p:nth-of-type(2) {
+  color: red;
+}
+/* 开始 中部字体 */
+.b-centerfont-com {
+  text-align: center;
+  height: 0.625rem;
+  line-height: 0.625rem;
+  background-color: #F0F2F5;
+}
+.b-centerfont-com > p {
+  position: relative;
+  font-weight: 0;
+  font-size: 0.21875rem;
+}
+.b-centerfont-com > p:before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 0.078125rem;
+  height: 0;
+  width: 4.0625rem;
+  border: 1px solid #ccc;
+}
+.b-centerfont-com > p:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  right: 0.078125rem;
+  height: 0;
+  width: 4.0625rem;
+  border: 1px solid #ccc;
+}
+/* 开始 为你推荐 */
+.b-recommend {
+  width: 10rem;
+}
+.rec-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.rec-wrap > a {
+  position: relative;
+  width: 50%;
+  height: 6.453125rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 0.125rem solid #F0F2F5;
+}
+.rec-wrap > a:nth-child(odd) {
+  border-right: 0.125rem solid #F0F2F5;
+}
+.rec-wrap > a > img {
+  height: 4.96875rem;
+  width: 100%;
+}
+.rec-wrap > a > p:nth-of-type(1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 0.53125rem;
+  margin: 0 0.0625rem;
+  font-size: 0.203125rem;
+  color: #000;
+}
+.rec-wrap > a > p:nth-of-type(2) {
+  margin: 0.09375rem 0.0625rem 0 0.0625rem;
+  color: red;
+}
+.rec-wrap > a > p:nth-of-type(2) > span:nth-of-type(1) {
+  font-size: 0.1875rem;
+}
+.rec-wrap > a > p:nth-of-type(2) > span:nth-of-type(2) {
+  font-size: 0.25rem;
+}
+.rec-wrap > a > p:nth-of-type(2) > span:nth-of-type(3) {
+  font-size: 0.21875rem;
+}
+.rec-wrap > a > p:nth-of-type(3) {
+  margin: 0.078125rem 0.0625rem 0 0.0625rem;
+  font-size: .8em;
+}
+.rec-wrap > a > p:nth-of-type(4) {
+  position: absolute;
+  bottom: 0.078125rem;
+  right: 0.078125rem;
+  padding: 0.046875rem 0.0625rem;
+  border: 0.015625rem solid #DEDEDE;
+}
+/* 开始 底部 */
+/* 开始 点击继续 */
+.f-continue {
+  background-color: #F3F5F7;
+}
+.f-continue > a {
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+  border-top: 0.015625rem solid #DBDBDB;
+  border-bottom: 0.015625rem solid #DBDBDB;
+  text-align: center;
+  line-height: 0.5rem;
+}
+.f-continue > a > p {
+  font-size: 0.21875rem;
+}
+/* 开始 底部1 */
+.f-1 {
+  width: 100%;
+  height: 0.78125rem;
+  text-align: center;
+  line-height: 0.78125rem;
+}
+.f-1 > a {
+  margin: 0 0.234375rem;
+  font-size: 0.21875rem;
+}
+/* 开始 底部2 */
+.f-2 {
+  height: 1.078125rem;
+  width: 100%;
+  text-align: center;
+  border-top: 0.015625rem solid #DBDBDB;
+  border-bottom: 0.015625rem solid #DBDBDB;
+}
+.f-2 > div {
+  display: inline-block;
+  margin-top: 0.09375rem;
+}
+.f-2 > div:nth-of-type(2) {
+  margin: 0 0.9375rem;
+}
+.f-2 > div > i {
+  font-size: 0.59375rem;
+}
+/* 开始 版权 */
+.f-cprt {
+  height: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+.f-cprt > p {
+  margin-top: 0.15625rem;
+  font-size: 0.15625rem;
+}
+/* 开始 底部导航 */
+.f-nav {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  height: 0.84375rem;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 0.3125rem 0.015625rem #ccc;
+}
+.f-nav > div {
+  position: fixed;
+  right: 10px;
+  bottom: 1.09375rem;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #c2c3c8;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  background-color: #fff;
+}
+.f-nav > div > i {
+  color: #c2c3c8;
+  font-size: 34px;
+}
+.f-nav > a {
+  position: relative;
+  text-align: center;
+  flex: 1;
+}
+.f-nav > a > i {
+  font-size: 0.46875rem;
+}
+.f-nav > a > p {
+  font-size: 0.21875rem;
+}
+.f-nav > a > img {
+  position: absolute;
+  height: 1.25rem;
+  bottom: 0;
+  left: 50%;
+  margin-left: -0.625rem;
+}
+/* 开始模板 一行四个 */
+.b-navvice-com1-4 {
+  width: 100%;
+  background-color: #fff;
+}
+.navvice-com1-4 {
+  display: flex;
+}
+.navvice-com1-4 > a {
+  width: 25%;
+  height: 3.1875rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.navvice-com1-4 > a + a {
+  border-left: 0.015625rem solid #F5F5F5;
+}
+.navvice-com1-4 > a > div {
+  width: 2.03125rem;
+  margin: 0.125rem auto;
+  text-align: left;
+}
+.navvice-com1-4 > a > div > p:nth-child(1) {
+  font-size: 0.4375rem;
+}
+.navvice-com1-4 > a > div > p:nth-child(2) {
+  font-size: 0.28125rem;
+}
+.navvice-com1-4 > a > img {
+  width: 1.71875rem;
+  height: 1.71875rem;
+}
+/* 开始模板 一行两个-1 */
+.b-navvice-com1-2-1 {
+  width: 100%;
+  background-color: #fff;
+}
+.navvice-com1-2-1 {
+  display: flex;
+}
+.navvice-com1-2-1 > a {
+  width: 50%;
+  height: 3.1875rem;
+  text-align: center;
+}
+.navvice-com1-2-1 > a + a {
+  border-left: 0.015625rem solid #F5F5F5;
+}
+.navvice-com1-2-1 > a > div:nth-child(1) {
+  width: 4.53125rem;
+  margin: 0.125rem auto;
+  text-align: left;
+}
+.navvice-com1-2-1 > a > div:nth-child(2) {
+  display: inline-block;
+}
+.navvice-com1-2-1 > a > div > p:nth-child(1) {
+  font-size: 0.4375rem;
+}
+.navvice-com1-2-1 > a > div > p:nth-child(2) {
+  font-size: 0.28125rem;
+}
+.navvice-com1-2-1 > a > div > img {
+  width: 1.71875rem;
+  height: 1.71875rem;
+  margin: 0 0.15625rem;
+}
+/* 开始模板 一行两个-2 */
+.b-navvice-com1-2-2 {
+  width: 100%;
+  background-color: #fff;
+}
+.navvice-com1-2-2 {
+  display: flex;
+}
+.navvice-com1-2-2 > a {
+  position: relative;
+  width: 50%;
+  height: 2.65625rem;
+}
+.navvice-com1-2-2 > a + a {
+  border-left: 0.015625rem solid #F5F5F5;
+}
+.navvice-com1-2-2 > a > div {
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+}
+.navvice-com1-2-2 > a > div > p:nth-child(1) {
+  font-size: 0.4375rem;
+}
+.navvice-com1-2-2 > a > div > p:nth-child(2) {
+  font-size: 0.28125rem;
+}
+.navvice-com1-2-2 > a > img {
+  position: absolute;
+  right: 0.125rem;
+  bottom: 0.125rem;
+  width: 2.125rem;
+  height: 2.125rem;
+}
+/* 开始模板 居中图片 */
+.b-centerimg-com {
+  text-align: center;
+  margin-top: 0.125rem;
+}
+.b-centerimg-com > img {
+  width: 5.109375rem;
+  height: 0.921875rem;
+}
