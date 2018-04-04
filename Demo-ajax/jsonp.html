@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="LostStars">
+    <title> -- 3/19/2018</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #wrap{
+            margin: 200px auto 0;
+            width: 600px;
+        }
+        #inp{
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            padding: 8px;
+            font-size: 16px;
+            outline: none;
+            line-height: 40px;
+        }
+        ul{
+            text-align: left;
+            box-sizing: border-box;
+            width: 100%;
+            border: 1px solid #A9A9A9;
+            box-shadow: 1px 1px 2px #A9A9A9;
+
+        }
+
+        li{
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            text-indent: 10px;
+        }
+        li:hover{
+            background: #dcdcdc;
+        }
+        li.hover{
+            background: #dcdcdc;
+        }
+        li a{
+            display: block;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <input type="text" id="inp">
+        <ul>
+            <!--<li><a href="">123</a></li>-->
+        </ul>
+    </div>
+    <script>
+        var oInput = document.getElementById('inp');
+        var oUl = document.getElementsByTagName('ul')[0];
+
+        // var aLi = oUl.children;
+        //当input表单中内容发生改变时触发
+        oInput.focus();
+        oInput.oninput = eFn;
+        // oInput.onfocus = eFn;
+        oInput.onkeydown = function(ev){
+            ev = ev || window.event;
+            var aLi = oUl.children;
+            var d = oInput.value;
+            var kC = ev.keyCode;
+            if( d && kC ===13 ){
+                var url = 'https://www.baidu.com/s?wd='+d;
+                window.open(url,'_blank');
+                this.blur();
+            }else if( d && kC === 40) {
+                this.index++;
+                var length = aLi.length;
+                this.index %= length + 1;
+
+            if(this.index){
+                this.value = aLi[this.index-1].children[0].innerHTML;
+            }else{
+                this.value = this.sv;
+            }
+            }
+            if( kC !== 40 ){
+                this.sv = d;
+            }
+            console.log(this.sv);
+
+
+
+
+
+        };
+        oInput.onblur = function(){
+            setTimeout(function(){
+                oUl.innerHTML = '';
+            },100)
+        };
+        oInput.onfocus = function(){
+            eFn.call(this);
+            this.sv = this.value;
+        };
+        // oUl.onclick = function(ev){
+        //     ev = ev || window.event;
+        //     if(ev.target.nodeName === 'A'){
+        //         oInput.value = ev.target.childNodes[0].nodeValue;
+        //     }
+        // };
+
+        //接收处理的函数,节点操作
+        function ls(data){
+            //清理上次查找的内容
+            console.log(data);
+            oUl.innerHTML = '';
+            console.log(data);
+            //获取jsonp传参后返回的数据
+            var data = data.s;
+
+            //遍历数据并生成联想结果
+            for(var i=0,length=data.length;i<length;i++){
+                var d = data[i];
+                var href = 'https://www.baidu.com/s?wd='+d;
+                var oLi = document.createElement('li');
+                oLi.innerHTML = `<a href="${href}" target="_blank">${d}</a>`;
+
+                //点击oLi后输入框value改变
+                oLi.onclick = function(){
+                    oInput.value = this.children[0].innerHTML;
+                };
+                oUl.appendChild(oLi);
+            }
+        }
+
+        //创建script标签
+        function eFn(){
+            this.index = 0;
+            var value = this.value;
+            if(value){
+                //清除前一个script
+                var dom = document.getElementById('SCRIPT_JSONP');
+                if(dom)document.body.removeChild(dom);
+                //要创建script标签来接收
+                var oScript = document.createElement('script');
+                oScript.id = "SCRIPT_JSONP";
+                oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+value+"&cb=ls";
+                document.body.appendChild(oScript);
+
+                //当请求来的js加载完成之后清除掉,不然会堆积很多script标签
+                // oScript.onload = function(){
+                //     document.body.removeChild(this);
+                // }
+            }else{
+                oUl.innerHTML = '';
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>
