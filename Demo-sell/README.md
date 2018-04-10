@@ -3,7 +3,7 @@
 ## Vue.js 和 Vue-cli 脚手架
 1. 初步了解和熟悉项目目录结构
 2. 初步了解和熟悉组件化和模块化的开发方式
-
+3. 初步了解SPA开发模式
 
 ## Vue-router
 1. 了解和熟悉Vue-router和axios请求
