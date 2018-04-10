@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example01 引入jq和调用构造器内部方法</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+</head>
+<body>
+    <h1>example01 引入jq和调用构造器内部方法</h1>
+    <hr>
+    <div id="app">
+        {{message}}
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                message: 'hello world'
+            }, // 参数
+            //在被挂载之后使用jq进行dom操作
+            mounted: function(){
+                $('#app').css({
+                    width: 100,
+                    height: 200,
+                    backgroundColor: 'red'
+                })
+            },
+            methods: {
+                fn1: function(){
+                    console.log('调用了构造器里面的方法');
+                }
+            }
+        })
+        // 调用构造器里面的方法
+        app.fn1();
+    </script>
+</body>
+</html>

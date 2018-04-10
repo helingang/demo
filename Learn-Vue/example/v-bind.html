@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .div1{
+            color: red;
+        }
+        .div2{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-bind</h1>
+    用于是处理HTML中的标签属性的
+    <hr>
+    <div id="app">
+        <h3>处理href和src属性</h3>
+        <p>
+            <img v-bind:src="imgSrc" alt="" width="200">
+        </p>
+        <p>
+            <a :href="aHref" target='_blank'>www.bilibili.com(使用:缩写绑定)</a>
+        </p>
+        <h3>绑定CSS样式</h3>
+        <div :class='className'>1. 直接绑定className</div>
+        <div :class='{div2: boolean}'>2. 通过布尔值判断是否绑定某一个class</div>
+        <div :class='[div1,div2]'>3. 绑定多个class名</div>
+        <div :class='boolean?div1:div2'>4. 通过布尔值判断绑定两个class中的哪一个</div>
+        <div :style='{color: yellow}'>5. 绑定具体的style属性</div>
+        <div :style='styleObj'>6. 绑定整个style对象</div>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                imgSrc: 'https://i0.hdslb.com/bfs/archive/bdb288021ff854d3ac618ac8c1eafd300ec9ed9b.png',
+                aHref: 'https://www.bilibili.com/',
+                boolean: true,
+                className: 'div1',
+                div1: 'div1',
+                div2: 'div2',
+                yellow: 'green',
+                styleObj: {
+                    fontSize: '30px',
+                    color: 'purple'
+                }
+            }, // 参数
+        })
+    </script>
+</body>
+</html>

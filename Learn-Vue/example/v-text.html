@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-text & v-html</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-text & v-html</h1>
+    避免网速很慢时显示{{}}的文本
+    <hr>
+    <div id="app">
+        <!-- 当script还未加载时span标签的innerHTML不会显示 -->
+        <span>{{message}}</span><br> 
+        <span v-text='message'></span>
+        <!-- 减少此方法的使用,因为容易导致xss攻击 -->
+        <span v-html='inner'></span>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                message: 'hello world',
+                inner: '<h1>Hello World</h1>'
+            }, // 参数
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-extend 扩展实例构造器</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue-extend 扩展实例构造器</h1>
+    <hr>
+    <div id="name1"></div>
+    <p class="name2"></p>
+    <author></author> 
+
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        // Vue.extend 返回的是一个“扩展实例构造器”,也就是预设了部分选项的Vue实例构造器。经常服务于Vue.component用来生成组件，可以简单理解为当在模板中遇到该组件名称作为标签的自定义元素时，会自动调用“扩展实例构造器”来生产组件实例，并挂载到自定义元素上
+        var nameExtend = Vue.extend({
+            data: function(){
+                return {
+                    name: 'LostStars',
+                    nameHref: 'http://www.baidu.com'
+                }
+            },
+            template: '<p><a :href="nameHref" target=\'_blank\'>{{name}}</a></p>',
+            
+        })
+
+        new nameExtend().$mount('#name1');
+        new nameExtend().$mount('.name2');
+        new nameExtend().$mount('author');
+
+    </script>
+</body>
+</html>

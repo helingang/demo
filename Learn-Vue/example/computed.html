@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed option</h1>
+    计算选项多用于输出之前(不会污染data中的原始数据,在computed中进行改造)对原数据进行改造输出( 改造输出:包括格式的编辑,大小写转换,顺序重排,添加符号 )
+    <hr>
+    <div id="app">
+        {{ newPrice }}
+        <ul>
+            <li v-for='value in reserveNews'>
+                {{value.data}}
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var newsList = [
+            { data: '习近平同金正恩举行会谈  向缅甸总统温敏致贺电', time: '2018/3/12' },
+            { data: '人民日报评论：把中朝友谊发展得更好 新华社评论', time: '2018/3/13' },
+            { data: '习近平主席特别代表杨洁篪将访问韩国', time: '2018/3/15' },
+            { data: '汪洋：各专委会要进一步完善协商议政格局', time: '2018/3/16' },
+        ];
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                price: 100,
+                newsList: newsList
+
+            }, // 参数
+            computed: {
+                newPrice: function(){
+                    let str = '$' + this.price + '元'
+                    return str
+                },
+                reserveNews: function(){
+                    return this.newsList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

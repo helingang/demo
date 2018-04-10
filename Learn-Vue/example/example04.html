@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>slot</h1>
+    <hr>
+    <div id="app">
+        <ls>
+            <span slot='webSite'>{{inf.webSite}}</span>
+            <span slot='webName'>{{inf.webName}}</span>
+        </ls>
+    </div>
+    <hr>
+    <template id="inf">
+        <div>
+            <p>网址是:<slot name='webSite'></slot></p>
+            <p>网名是:<slot name='webName'></slot></p>
+        </div>
+    </template>
+    
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var ls = {
+            template: '#inf'
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                inf: {
+                    webSite: 'http://www.bilibili.com',
+                    webName: 'LostStars'
+                }
+            },
+            components: {
+                ls: ls
+            }
+        })
+        
+
+    </script>
+</body>
+</html>

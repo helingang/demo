@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set 全局操作</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        {{message.data1}}
+        <button onclick='fn()'>add</button>
+        <ul>
+            <li v-for='(value,index) in message.data2'>
+                {{value}}
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        function fn(){
+            // Vue.set(app.message,'data1',10)
+            // app.message.data1++;
+            // app.message.data2[2] = 'zz'; // 如果只执行这一行,则不会成功,而改用Vue.set则可以成功
+            Vue.set(app.message.data2,2,'zz');
+            Vue.set(app.message,'data1',20);
+        }
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                message: {
+                    data1: 5,
+                    data2: ['aa', 'bb', 'cc']
+                }
+            } // 参数
+            
+        })
+
+        var arr = {
+            data: ['aa','b','c']
+        }
+        arr.data[1] = 'zz'
+        console.log(arr);
+    </script>
+</body>
+</html>

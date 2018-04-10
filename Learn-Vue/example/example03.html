@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实例事件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>实例事件</h1>
+    <hr>
+    <div id="app">
+        {{ num }}
+        <p><button @click='add'>内部调用内部声明的方法add</button></p>
+        <p><button onclick='red()'>内部调用外部声明的方法red</button></p>
+    </div>
+    <!-- <p><button onclick='red()'>外部调用red</button></p> -->
+    <p><button onclick='once()'>外部调用外部声明的方法once</button></p>
+    <p><button onclick='off()'>外部调用外部声明的方法off</button></p>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                num: 1
+            }, // 参数
+            methods: {
+                add: function(){
+                    this.num++;
+                }
+            }
+        })
+        
+        
+        // 在构造器外部添加事件
+        app.$on('red',function(){
+            console.log('外部定义的red方法被执行');
+            this.num--;
+        })
+        function red(){
+            app.$emit('red') // 外部声明的事件需由实例化对象来emit(发射)
+        }
+
+        // 执行一次的事件
+        app.$once('redOnce',function(){
+            console.log('redOnce被执行');
+            this.num--;
+        })
+        // 
+        function once(){
+            app.$emit('redOnce')
+        }
+        // 关闭red事件
+        function off(){
+            console.log('off被执行');
+            app.$off('red')
+        }
+
+    </script>
+</body>
+</html>

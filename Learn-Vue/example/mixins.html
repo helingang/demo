@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mixins option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixins option</h1>
+    Mixins一般有两种用途：
+    1. 在你已经写好了构造器后，需要增加方法或者临时的活动时使用的方法，这时用混入会减少源代码的污染。
+    2. 很多地方都会用到的公用方法，用混入的方法可以减少代码量，实现代码重用。
+    <hr>
+    <div id="app">
+        {{num}}
+        <p><button @click='add'>add</button></p>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var csN = {
+            data: {
+                num: 2
+            },
+            updated: function(){ console.log('我是局部的混入; 改变后的数字为' + app.num) }
+        }
+        var csNG = {
+            updated: function(){ console.log('我是全局的混入; 改变后的数字为' + app.num) }
+        }
+        // Vue.mixin(csNG)
+        Vue.mixin({
+            updated: function(){ console.log('我是全局的混入; 改变后的数字为' + app.num) }
+        })
+        var app = new Vue({ // 实例化
+            
+            el: '#app', 
+            data: {
+                num: 1
+            }, // 参数
+            methods: {
+                add: function(){
+                    this.num++
+                }
+            },
+            updated: function(){
+                console.log('原生的;' + app.num)
+            },
+            // 混入的先执行
+            mixins: [csN],
+        })
+        
+    </script>
+</body>
+</html>

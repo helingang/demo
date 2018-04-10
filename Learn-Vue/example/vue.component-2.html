@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-2</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue-component-2</h1>
+    <hr>
+    <div id="app">
+        <dev :say='message'></dev>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                message: 'hello world',
+            }, // 参数
+            components: {
+                dev: {
+                    template: `<h4>我是web,说 {{ say }}</h4>`,
+                    props: {
+                        say: {
+                            type: String,
+                            require: true
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

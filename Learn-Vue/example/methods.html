@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods option</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <!-- 事件函数的 $event 对象 -->
+        <p><button @click='add(num1,$event)'>原生按钮</button></p>
+        <p><btn @click.native='add(num1,$event)'></btn></p>
+    </div>
+    <button onclick='app.add(app.num1)'>Vue对象外部的按钮</button>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var btn = {
+            template: '<button>组件按钮</button>'
+        }
+        var n = 5;
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                num: 1,
+                num1: n
+            }, // 参数
+            components: {
+                'btn': btn
+            },
+            methods: {
+                add: function(a, b){
+                    console.log(b);
+                    a?this.num+=a:this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue-component-1</h1>
+    <hr>
+    <div id="app">
+        <test></test>
+    </div>
+    <div id="app2">
+        <test2 :num='num'></test2>
+        <test3></test3>
+        <ls></ls>
+        {{num}}
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        Vue.component('test',{
+            template: `<h4 style='color: pink'>这里是全局组件</h4>`
+        })
+        Vue.component('ls',{
+            template: `<span>ls组件</span>`
+        })
+        var app = new Vue({ // 实例化
+            el: '#app',
+        });
+        var app2 = new Vue({ // 实例化
+            el: '#app2',
+            data: {
+                num: 12
+            },
+            components: {
+                 test2: {
+                    template: '<h4 style="color: pink">这里是局部组件test2 {{ num }} </h4>',
+                    props: {
+                        num: {
+                            type: Number,
+                            require: true
+                        }
+                    }
+                },
+                test3: {
+                    template: `<h4 style='color: pink'>这里是局部组件test3</h4>`
+                }
+            }
+        })
+    </script>
+</body>
+</html>

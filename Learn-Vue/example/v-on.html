@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        button{
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-on</h1>
+    用于绑定事件
+    <hr>
+    <div id="app">
+        比赛分数 <span v-text='baseScore'></span><br>
+        <!-- 绑定鼠标点击事件 -->
+        <button v-on:click='addScore'>得分1
+        <button @click='addScore'>得分1(用@符绑定)
+        <!-- 绑定回车抬起事件 -->
+        <button v-on:keyup.13='addScore2'>得分2(用回车符绑定)
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                baseScore: 0,
+                score1: 1,
+                score2: 2
+            }, // 参数
+            
+            methods: {
+                addScore: function(){
+                    this.baseScore += this.score1;
+                },
+                addScore2: function(){
+                    this.baseScore += this.score2;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

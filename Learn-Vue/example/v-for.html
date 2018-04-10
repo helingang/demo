@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for</h1>
+    用来循环渲染一组data中的数组
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for='val in arr'>
+                {{ val }}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for='val,index in sortArr'>
+               {{index+1}}--{{val}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for='(val,index) in sortObj'>
+                {{index + 1}}--{{val.name}}--{{val.age}}
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                arr: [53,23,7,14,54,36,28],
+                obj: [
+                    {name: 'LostStars', age: '20'},
+                    {name: 'Swifty', age: '31'},
+                    {name: 'gangsi', age: '10'},
+                    {name: 'husky', age: '22'}
+                ]
+            }, // 参数
+            computed: {
+                sortArr: function(){
+                    return this.arr.sort(function(a, b){ 
+                        return a - b 
+                    })
+                },
+                sortObj: function(){
+                    return this.obj.sort(function(a, b){ 
+                        return a.age - b.age 
+                    })
+                }   
+            }, // 改造data中的数据
+        })
+
+    </script>
+</body>
+</html>

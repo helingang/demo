@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-4</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue-component-4</h1>
+    component组件可以动态获取自定义的组件
+    <hr>
+    <div id="app">
+        <component :is='who'></component>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var componentA = {
+            template: `<div>componentA</div>`
+        }
+        var componentB = {
+            template: `<div>componentB</div>`
+        }
+        var componentC = {
+            template: `<div>componentC</div>`
+        }
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                who: 'bb'
+            }, // 参数
+            components: {
+                aa: componentA,
+                bb: componentB,
+                cc: componentC
+            },
+            created(){
+                console.log(this)
+            }
+        })
+    </script>
+</body>
+</html>

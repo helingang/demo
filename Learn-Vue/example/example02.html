@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example02 $mount() $destroy() $forceUpdate $nextTick</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example02 $mount() $destroy() $forceUpdate $nextTick</h1>
+    <hr>
+    <div id="app">
+    </div>
+    <p>
+        <button onclick='mount()'>mount</button>
+        <button onclick='forceUpdate()'>forceUpdate</button>
+        <button onclick='nextTick()'>nextTick</button>
+        <button onclick='destroy()'>destroy</button>
+    </p>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var ext = Vue.extend({
+            template: '<p>{{ msg }}</p>',
+            data: function(){
+                return {
+                    msg: '我是扩展的data'
+                }
+            },
+            beforeCreate: function(){
+                console.log('1-beforeCreate 创建之前');
+            },
+            created: function(){
+                console.log('2-created 创建之后');
+            },
+            beforeMount: function(){
+                console.log('3-beforeMount 挂载之前');
+            },
+            mounted: function(){
+                console.log('4-mounted 挂载之后');
+            },
+            beforeUpdate: function(){
+                console.log('5-beforeUpdate 数据更新前');
+            },
+            updated: function(){
+                console.log('6-updated 被更新后');
+            },
+            activated: function(){
+                console.log('7-activated');
+            },
+            deactivated: function(){
+                console.log('8-deactivated');
+            },
+            beforeDestroy: function(){
+                console.log('9-beforeDestroy 销毁之前');
+            },
+            destroyed: function(){
+                console.log('10-destroyed 销毁之后')
+            }
+        })
+        var a;
+        function mount(){
+            a = new ext().$mount('#app');
+        }
+        function forceUpdate(){
+            if(a.msg !== '我是扩展更新后的data2'){
+                a.msg = '我是扩展更新后的data2'
+            }else{
+                a.msg = '我是扩展更新后的data1';
+            }  
+        }
+        // 当Vue构造器里的data值被修改完成后会调用这个方法，也相当于一个钩子函数吧，和构造器里的updated生命周期很像
+        function nextTick(){
+            a.msg = "update message info ";
+            a.$nextTick(function(){
+                console.log('msg更新完后我被调用了');
+            })
+        }
+        function destroy(){
+            a.$destroy();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>propsData option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>propsData option</h1>
+    propsData用在全局扩展时进行传递数据
+    <hr>   
+    <ls></ls>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var ex = Vue.extend({
+            template: `<span>{{ show }} {{ a }}</span>`,
+            data: function(){
+                return {
+                    show: '我的名字是:'
+                }
+            },
+            props: ['a']
+        })
+        new ex({propsData: {a: 'LostStars'}}).$mount('ls');
+    </script>
+</body>
+</html>

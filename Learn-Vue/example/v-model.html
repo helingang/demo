@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    用于绑定数据
+    <hr>
+    <div id="app">
+        <h3>绑定文本框</h3>
+        <span>原始数据: {{showData}}</span>
+        <br/>
+        v-model&nbsp;<input type="text" v-model='showData'>
+        <br/>
+        v-model.number&nbsp;<input type="text" v-model.number='showData'>
+        <br/>
+        v-model.trim&nbsp;<input type="text" v-model.trim='showData'>
+        <br/>
+        v-model.lazy&nbsp;<input type="text" v-model.lazy='showData'>
+        <h3>绑定文本域</h3>
+        <textarea name="" id="" cols="30" rows="2" v-model='showData'></textarea>
+        <h3>多选按钮绑定一个值</h3>
+        <input type="checkbox" v-model='boolean'>&nbsp;{{boolean}}
+        <h3>多选按钮绑定数组</h3>
+        <input type="checkbox" id="name1" value='Sam' v-model='nameArr' checked="checked">
+        <label for="name1">Sam</label>
+        <input type="checkbox" id="name2" value='Jack' v-model='nameArr'>
+        <label for="name2">Jack</label>
+        <input type="checkbox" id="name3" value='mai' v-model='nameArr'>
+        <label for="name3">mai</label>
+        <div>您选中的姓名有 <span v-for='val,index in nameArr'>{{val}} </span></div>
+        <div>您选中的姓名有 {{nameArr}}</div>
+        <h3>单选按钮绑定数据</h3>
+        <input type="radio" id='food1' value='苹果' name="fruit" v-model='fruitName' checked>
+        <label for="food1">苹果</label>
+        <input type="radio" id='food2' value='香蕉' name="fruit" v-model='fruitName'>
+        <label for="food2">香蕉</label>
+        <input type="radio" id='food3' value='桃子' name="fruit" v-model='fruitName'>
+        <label for="food3">桃子</label>
+        <div>您选中的水果是 {{fruitName}}</div>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                showData: '12345',
+                boolean: true,
+                nameArr: [],
+                fruitName: ''
+            }, // 参数
+        })
+    </script>
+</body>
+</html>

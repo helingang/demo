@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .login{
+            width: 300px;
+            border: 1px solid #000;
+        }
+        .vip{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-if&v-else&v-show</h1>
+    用来判断是否加载html的DOM
+    <hr>
+    <div id="app">
+        <div class="login" v-if='isLogin1'>
+            {{log}}
+            <p v-if='isU'>你是本人</p>
+            <p v-else>你是不本人</p>
+        </div>
+        <div class="login" v-else>
+            你好,你未登录
+            <p v-if='isU'>你是本人</p>
+            <p v-else>你是不本人</p>
+        </div>
+        <div class="vip" v-show='isVip'>是会员</div>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        let app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                log: '你好,你已经登录',
+                isLogin1: true, // 为false时标签被删除
+                isU: false,
+                isVip: true
+            }, // 参数
+        })
+        setInterval(() => {
+            app.isLogin1 = !app.isLogin1
+        }, 2000)
+        
+    </script>
+</body>
+</html>

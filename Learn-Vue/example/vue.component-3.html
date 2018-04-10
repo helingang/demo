@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-component-3</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue-component-3</h1>
+    <hr>
+    <div id="app">
+        <test1 :test1p='p1'></test1>
+    </div>
+    <hr>
+    <a href="../index.html">回到首页</a> 
+    <script>
+        // var c = {
+        //     template: `<div>局部组件子级</div>`  
+        // }
+        // var p = {
+        //     template: `
+        //     <div>
+        //         <span>局部组件父级</span>
+        //         <test2></test2>
+        //     </div>
+        //     `,
+        //     components: {
+        //         'test2': c
+        //     }
+        // }
+
+
+        var app = new Vue({ // 实例化
+            el: '#app', 
+            data: {
+                p1: 1,
+                p2: 2
+            },
+            components: {
+                'test1': {
+                    template: `
+                    <div>
+                        <span>父级{{ test1p }}</span>
+                        <test2></test2>
+                    </div>
+                    `,
+                    props: ['test1p'],
+                    components: {
+                        'test2': {
+                            template: '<div>子级</div>'
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
