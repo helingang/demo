@@ -31,6 +31,6 @@ export default new Router({
             component: Seller
         }
     ],
-    // 修改激活tab时的类名
+    // 修改激活tab时的类名, 默认是router-link-active
     linkActiveClass: 'active'
 });

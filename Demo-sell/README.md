@@ -80,3 +80,45 @@ funcName(newValue){
     this.value = newValue;
 }
 
+8. 格式化13位的日期字符
+接口提供13位的日期字符,例如`"rateTime": 1469281964000,`
+```
+// 修改插值
+{{ dateValue | formatDate }}
+
+// 构造器的选项中添加 filters ,并且引入写好的formatDate方法
+import {formatDate} from 'date.js';
+
+filters: {
+    formatDate(time){
+        var date = new Date(time);
+        return formatDate(date, 'yyyy-MM-dd hh:mm');
+    }
+},
+
+// date.js
+export function formatDate(date, fmt){
+    if (/(y+)/.test(fmt)){
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    let o = {
+        'M+': date.getMonth() + 1,
+        'd+': date.getDate(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+    };
+    for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)){
+            let str = o[k] + '';
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+        }
+    }
+    return fmt;
+};
+
+function padLeftZero(str){
+    return ('00' + str).substr(str.length);
+};
+```
+
