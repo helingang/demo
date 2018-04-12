@@ -51,3 +51,30 @@ slot被外部引入这个组件标签中的DOM所替代
 6. `v-if`一种添加的时机
 当通过ajax或者jsonp得到数据并赋值给对象之后,再渲染DOM
 
+7. `host`和`referer`校验,,导致jsonp请求500错误
+通过在后台修改`referer`和`host`后发送请求,然后前端接收
+```
+const express = require('express')
+var apiRoutes = express.Router();
+
+devServer: {
+    before(app){
+        app.get('/api/getDiscList', function(req, res){
+            const url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg';
+            axios.get(url, {
+                headers: {
+                    referer: 'http://c.y.qq.com/',
+                    host: 'c.y.qq.com'
+                },
+                params: req.query
+            }).then((response) => {
+                res.json(response.data);
+            }).catch((e) => {
+                console.log(e);
+            })
+        })
+    },
+}
+```
+
+8. `Vue.lazyload`的使用
