@@ -76,5 +76,29 @@ devServer: {
     },
 }
 ```
-
 8. `Vue.lazyload`的使用
+```
+// main.js中引入并配置
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload, {
+    loading: require('./common/images/loading.gif')
+});
+// 修改img标签的src属性
+v-lazy="imgUrl"
+
+```
+9. `loading`基础组件的开发
+
+10. 事件
+touchstart: 当在屏幕上按下手指时触发
+touchmove: 当在屏幕上移动手指时触发
+touchend: 当在屏幕上抬起手指时触发
+touchcancel: 当一些更高级别的事件发生的时候（如电话接入或者弹出信息）会取消当前的touch操作，即触发touchcancel。一般会在touchcancel时暂停游戏、存档等操作。
+
+11. 300ms延迟问题
+```
+import fastclick from 'fastclick';
+// 在main.js中把fastclick添加到body中,阻止300ms的延迟
+fastclick.attach(document.body);
+```
+
