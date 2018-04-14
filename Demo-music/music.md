@@ -216,3 +216,12 @@ import {mapGetters, mapState} from 'vuex';
      ['singer']
 )
 ```
+
+13. 对象或数组的解构赋值
+```
+// 表达式左边表示要从对象中取出什么变量
+let a, b;
+({a, b} = {a: 10, b: 20})
+// a 10
+// b 20
+```
