@@ -102,3 +102,117 @@ import fastclick from 'fastclick';
 fastclick.attach(document.body);
 ```
 
+
+12. 构造`vuex`目录
+在`store`目录下新建文件
+
+- 新建入口文件`index.js`
+```
+// 入口文件
+import Vue from 'vue';
+import Vuex from 'vuex';
+import * as actions from './actions';
+import * as getters from './getters';
+import state from './state';
+import mutations from './mutations';
+// 当mutations修改state的时候会在控制台打印logger
+import createLogger from 'vuex/dist/logger';
+
+// 注册vuex
+Vue.use(Vuex);
+
+const debug = process.env.NODE_ENV !== 'productions';
+
+// export 一个单例store
+export default new Vuex.Store({
+    actions,
+    getters,
+    state,
+    mutations,
+    // 严格模式的作用是检测state是否是被mutations修改的
+    strict: debug,
+    plugins: debug ? [createLogger()] : []
+});
+```
+- 新建`state`状态文件
+```
+// 状态
+const state = {
+    singer: {}
+};
+
+export default state;
+```
+- 新建`mutations.js`和`mutation-types.js`<br>
+```
+// mutatins.js
+// mutations就是一个方法,去修改
+import types from './mutation-types.js';
+
+const mutations = {
+    [types.SET_SINGER](state, singer){
+        state.singer = singer;
+    }
+};
+
+export default mutations;
+```
+```
+// mutation-types.js
+const types = {
+    SET_SINGER: 'SET_SINGER'
+};
+
+export default types;
+```
+- 新建`getters.js`
+```
+export const singer = state => state.singer;
+```
+- 新建`actions.js`
+- 在main.js中引用
+```
+import store from './store';
+new Vue({
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
+});
+```
+
+- 设置参数到state中(在methods中设置)<br>
+`singer.vue`
+```
+import {mapMutations} from 'vuex';
+```
+```
+// methods中新增
+...mapMutations(
+    {
+        setSinger: 'SET_SINGER'
+    }
+)
+```
+```
+// 在方法中设置
+// 会将val赋值给state.singer
+this.setSinger(val);
+```
+
+- 引用state中的参数(在computed中引用)<br>
+`singer-detail`
+```
+import {mapGetters, mapState} from 'vuex';
+```
+```
+...mapGetters([
+    // 对应getters.js中的singer
+    // 可以在当前组件中拿到这个singer
+    'singer'
+])
+// 或者
+...mapState(
+     ['singer']
+)
+```
