@@ -5,6 +5,11 @@
 <img src="./demo/ratings-1.jpg" width='200'>
 <img src="./demo/seller-1.jpg" width='200'>
 
+![Alt text](./demo/goods-1.jpg)
+![Alt text](./demo/goods-2.jpg)
+![Alt text](./demo/ratings-1.jpg)
+![Alt text](./demo/seller-1.jpg)
+
 ## 技术栈
 1. vue.js
 2. vue-router做前端路由实现SPA应用
