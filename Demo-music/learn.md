@@ -2,11 +2,11 @@
 ## 概述
 项目是基于vue.js, 通过vue-cli脚手架构建开发环境,使用了vue-route, vuex, 使用better-scroll做滚动, axios做数据抓取
 ## 页面效果
-<img src="./image/recommend-1.png" width='300'>
-<img src="./image/singer.png" width='300'>
-<img src="./image/singer-2.png" width='300'>
-<img src="./image/singer-3.png" width='300'>
-<img src="./image/rank.png" width='300'>
+![Alt text](./image/recommend-1.png)
+![Alt text](./image/singer.png)
+![Alt text](./image/singer-2.png)
+![Alt text](./image/singer-3.png)
+![Alt text](./image/rank.png)
 ## 项目目录
 1. 推荐页
 2. 歌手页
