@@ -114,7 +114,5 @@ Vue.use(VueLazyload, {
 ## 排行页
 1. 使用歌曲详情列表(公共组件),因此传入需要的数据即可
 
-
-
 ## 地址
 [music](https://github.com/helingang/demo/tree/master/Demo-music)
