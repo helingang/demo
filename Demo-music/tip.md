@@ -8,7 +8,8 @@
 6. 播放器页面: 图片, 歌词, 进度条, 收藏, 快进等
 7. 播放列表: 随机播放, 删除歌曲, 收藏歌曲, 添加歌曲
 8. 用户中心: 我喜欢的, 最近听的, 随机播放全部
-## 遇到和解决的问题
+
+## 小知识点
 1. 不能引入`common`中的文件
 ```
 // webpack.base.conf.js的resolve中添加
@@ -30,9 +31,6 @@ function resolve (dir) {
     return path.join(__dirname, '..', dir)
 }
 ```
-
-
-## 小知识点
 1. `router-link`的激活类名
 默认是`router-link-active`,可以在`index.js`的`new router`中通过`linkActiveClass: 'active'`修改
 
