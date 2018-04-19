@@ -1,6 +1,6 @@
 # webApp
 ## 页面效果
-<img src="./demo/goods-1.jpg" width=200'>
+<img src="./demo/goods-1.jpg" width='200'>
 <img src="./demo/goods-2.jpg" width='200'>
 <img src="./demo/ratings-1.jpg" width='200'>
 <img src="./demo/seller-1.jpg" width='200'>
