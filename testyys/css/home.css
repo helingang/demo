@@ -1,0 +1,13 @@
+#bg{
+    width: 100%;
+    min-width: 1280px;
+}
+#bg .bg{
+    width: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+#bg .bg1{
+    height: 1080px;
+    background-image: url('../images/bg1.jpg');
+}
